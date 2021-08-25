@@ -41,11 +41,17 @@ let addControlsContainer = () => {
 }
 
 let pluginToggleUi = (plugin: any) => {
-  let template = `<label>
+  let template = `<label id="${plugin.name}">
       <input type="checkbox" checked /> ${plugin.name}
     </label>`;
   let node = document.createElement('li');
   node.innerHTML = template;
+  const toolTip = document.createElement("span");
+  toolTip.id = "texttoolTip";
+  toolTip.innerText='To use: Highlight some text and then double tap the ctrl key!';
+  if (plugin.name=='Text'){
+    node.append(toolTip);
+  }     
   return node;
 }
 
