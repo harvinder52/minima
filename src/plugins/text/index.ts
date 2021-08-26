@@ -205,7 +205,7 @@ let hideText = () => {
   
          parent.style.background = colour.rgba().toString();
          document.querySelector(".minima-textbox").style.color = colour.rgba().toString();
-         console.log(colour.rgba().toString())
+         //console.log(colour.rgba().toString())
          let rgba = colour.rgba();
        }
        
@@ -229,10 +229,13 @@ let hideText = () => {
            let newtextDecoration = document.querySelector(".minima-textbox").style.textDecoration;
            let newfontFamily = (<HTMLInputElement>document.querySelector(".select-fontfamilySelect")).value;
            let newfontColor = document.querySelector(".minima-textbox").style.color;
-           let newText_textarea = document.querySelector(".minima-textbox").value;
+           let newText_textarea:string = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).value;
+           //let newText_textarea = newText_textareaElement.value;
+
+           console.log(newText_textarea)
            let newText_s  = s.getItem("text");
 
-           let newText = (newText_s=="")? newText_textarea: newText_s;
+           let newText = (newText_s == "") ? newText_textarea : newText_s;
            console.log(newText)
            
 
@@ -243,7 +246,7 @@ let hideText = () => {
 
 
            //todo -- no need to create new variables, just assign the sp1 property directly from textarea.
-           sp1.innerText = newText;
+           sp1.innerText = newText_textarea;
            sp1.style.fontSize = newfontSize;
            sp1.style.fontStyle = newfontStyle;
            sp1.style.fontWeight = newfontWeight;
