@@ -50,7 +50,8 @@ let hideText = () => {
         hideText.innerText ='Hide';
 
 
-        const colorPicker = document.createElement("div")
+        const colorPicker = document.createElement("button");
+        colorPicker.innerText ='C:';
         colorPicker.classList.add('colorPicker')
         let colorPickerscript = document.createElement('script');
         colorPickerscript.src = 'https://rawgithub.com/suffick/Picker/master/dist/picker.min.js';
@@ -72,8 +73,19 @@ let hideText = () => {
 
 
 
-        const selectionDiv = document.createElement('div');
-        selectionDiv.classList.add("minima-text-editor")
+        
+        let minima_textEditor = document.createElement("div");
+        minima_textEditor.classList.add("minima-text-editor");
+
+
+        let titleBar = document.createElement('div');
+        titleBar.classList.add("titleBar")
+        titleBar.innerText ="Minima - Text Editor v1.0.1"
+
+        let undercont = document.createElement("div");
+        undercont.classList.add("undercont");
+
+
 
         const textArea = document.createElement('textarea');
         textArea.classList.add("minima-textbox")
@@ -87,13 +99,27 @@ let hideText = () => {
         console.log(selection.anchorNode.parentElement);
         let selectionText = selection.toString();
         setText(selectionText);
-        
-        selectionDiv.append(textArea,addButtonAdd, addButtonNeg, boldText, italicText, underlineText, fontfamilySelect, hideText, colorPicker, saveButton, cancelButton);
+
+        selectionNode.append(minima_textEditor);
+        minima_textEditor.append(titleBar);
+        titleBar.insertAdjacentElement("afterend", undercont);
+
+        //undercont.append( fontfamilySelect, hideText, colorPicker, saveButton, cancelButton);
+        undercont.appendChild(textArea);
+        undercont.appendChild(addButtonNeg);
+        undercont.appendChild(addButtonNeg);
+        undercont.appendChild(boldText);
+        undercont.appendChild(italicText);
+        undercont.appendChild(underlineText);
+        undercont.appendChild(fontfamilySelect);
+        undercont.appendChild(hideText);
+        undercont.appendChild(colorPicker);
+        undercont.appendChild(saveButton);
+        undercont.appendChild(cancelButton);
        
 
-        //selectionNode.innerHTML = selectionNode.innerHTML.replace(selectionText,selectionDiv.outerHTML);
-        selectionNode.append(selectionDiv)
-
+        //selectionNode.innerHTML = selectionNode.innerHTML.replace(selectionText,minima_textEditor.outerHTML);
+       
   //code-block that increases font size within textarea box
       selectionNode.querySelectorAll(".button-Add").forEach((item:any)=>{
         item.addEventListener("click", ()=>{
@@ -256,11 +282,11 @@ let hideText = () => {
            
 
            
-           //selectionDiv.replaceWith(sp1);
+           //minima_textEditor.replaceWith(sp1);
            selectionNode.innerHTML = selectionNode.innerHTML.replace(selectionText,sp1.outerHTML);
 
-           let selectionDiv = document.querySelector('.minima-text-editor');
-           selectionDiv.remove();
+           let minima_textEditor = document.querySelector('.minima-text-editor');
+           minima_textEditor.remove();
 
 
         });
@@ -268,12 +294,12 @@ let hideText = () => {
 
     selectionNode.querySelectorAll(".button-cancel").forEach((item:any)=>{
         item.addEventListener("click", ()=>{
-           let selectionDiv = document.querySelector('.minima-text-editor');
+           let minima_textEditor = document.querySelector('.minima-text-editor');
           
            const sp2 = document.createElement('span');
            sp2.innerText = selectionText
-           //selectionDiv.replaceWith(sp2)
-           selectionDiv.remove();
+           //minima_textEditor.replaceWith(sp2)
+           minima_textEditor.remove();
            console.log("clicked: cancelButton")
         });
      })
