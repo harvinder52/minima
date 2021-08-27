@@ -1,0 +1,190 @@
+.hidden_text{
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hidden_text:hover{
+  opacity: 1;
+}
+
+  
+ 
+.button-boldText{
+    position: absolute;
+    cursor: pointer;
+    left: 84%;
+    top: 14%;
+  }
+.button-italicText{
+    position: absolute;
+    cursor: pointer;
+    left: 89%;
+    top: 14%;
+  }
+.button-underlineText{
+    position: absolute;
+    cursor: pointer;
+    left: 94%;
+    top: 14%;
+  }
+.button-hideText{
+      font-size: 0.75em;
+      position: absolute;
+      top: 24%;
+      left: 83%;
+      cursor: pointer;
+      width: 15%
+
+    }
+
+.button-Add {
+	 font-size: 12px;
+      position: absolute;
+      top: 34%;
+      left: 85%;
+      border-radius: 2px;
+      text-shadow: 1px 1px white;
+      background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
+      box-shadow: 0px 0px 0px 1px rgba(0,0,0,.18), 0px 18px 50px rgba(0,0,0,.5);
+      cursor: pointer;
+     }
+.button-Neg{
+      font-size: 12px;
+      position: absolute;
+      top: 34%;
+      left: 91%;
+      border-radius: 2px;
+      text-shadow: 1px 1px white;
+      background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
+      box-shadow: 0px 0px 0px 1px rgba(0,0,0,.18), 0px 18px 50px rgba(0,0,0,.5);
+      cursor: pointer;
+    }
+  .button-save{
+
+      top: 70%;
+      position: absolute;
+      left: 83%;
+      cursor: pointer;
+      width: 15%
+
+      
+    }
+    .button-cancel{
+
+      
+      top: 80%;
+      position: absolute;
+      left: 83%;
+      cursor: pointer;
+      width: 15%
+    }
+
+.colorPicker{
+      position: absolute;
+      top: 44%;
+      left: 83%;
+      cursor: pointer;
+    }
+
+
+ .minima-textbox {
+  position: absolute;
+      top: 1%;
+      left: 1%;
+      width: 80%;
+
+      height: 87%;
+      max-width: 78%;
+      max-height: 87%;
+
+ }
+ .select-fontfamilySelect{
+      position: absolute;
+      top: 4%;
+      left: 83%;
+      cursor: pointer;
+      max-width: 15%;
+
+    }
+ .minima-text-editor
+{
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 650px;
+  height: 350px;
+  resize:both;
+  overflow:hidden;
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,.18), 0px 18px 50px rgba(0,0,0,.5);
+  vertical-align: middle;
+  border-radius: 0.5em 0.5em 0 0;
+}
+.titleBar{
+      
+      font-size: 0.75em;
+      text-shadow: 1px 1px white;
+      text-align: center;
+      color: black;
+      font-family: 'Lucida Grande', Helvetica, Arial;
+      box-shadow: 0px 0px 0px 1px rgba(0,0,0,.18), 0px 18px 50px rgba(0,0,0,.5);
+      
+      height: 2em;
+      background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
+    }
+.undercont{
+      position: relative;
+      height: inherit;
+      box-shadow: 0px 0px 0px 1px rgba(0,0,0,.18), 0px 18px 50px rgba(0,0,0,.5);
+      border-radius: 0 0 1em 1em;
+      background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
+    }
+
+
+#texttoolTip {
+  visibility: hidden;
+  height: 50px;
+  width: 300px;
+  color: black;
+  background-color: purple;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position : absolute;
+  z-index: 1;
+  
+  top: 60px;
+  left: 150px;
+}
+
+ul{
+  positon: relative;
+}
+
+#Text:hover + #texttoolTip {
+  visibility: visible;
+}
+
+#minima{}
+
+#minima-controls{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.minima-card{
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #888;
+  margin: 10px;
+  padding: 10px;
+}
+
+#minima-plugins{
+  list-style: none;
+}
+
+#minima-images-choice{
+  position:absolute;
+}
