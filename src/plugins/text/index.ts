@@ -12,8 +12,15 @@ let hideText = () => {
   if (selection.toString() === "") {
     console.log("Selection Error");
   }else {
+     console.assert(selection.focusNode == selection.anchorNode);
+     if (document.querySelector(".minima-text-editor"))
+     {
+       console.log("truthy");
+       document.querySelector(".minima-text-editor").remove();
+     }else{
      textEditor(selection);
   }
+}
   function textEditor(selection: any){
         console.log(selection.toString())
 
@@ -358,6 +365,12 @@ let hideText = () => {
   
   }
 };
+
+let disableEditor = () => {
+  if (document.querySelector(".minima_textEditor")){
+    console.log("truthy")
+  }
+}
 
 let enable = () => {
   document.addEventListener('minima.ctrlDoublePressed', hideText);
