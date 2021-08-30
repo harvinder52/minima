@@ -8,8 +8,9 @@ let hideText = () => {
   if (selection.toString() === "") {
     console.log("Selection Error");
   }else {
-     textresize(selection);
-     function textresize(selection){
+     textEditor(selection);
+  }
+  function textEditor(selection: any){
         console.log(selection.toString())
 
 
@@ -123,15 +124,15 @@ let hideText = () => {
   //code-block that increases font size within textarea box
       selectionNode.querySelectorAll(".button-Add").forEach((item:any)=>{
         item.addEventListener("click", ()=>{
-          let newfontSize:string = document.querySelector(".minima-textbox").style.fontSize;
+          let newfontSize:string = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize;
           if (newfontSize == ""){
              let newfontnum:number = 1;
              newfontSize = (newfontnum+=0.5)+"em";
-             document.querySelector(".minima-textbox").style.fontSize=newfontSize;
+             (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
           }else{
              let newfontnum:number =parseFloat(newfontSize);
              newfontSize = (newfontnum+=0.5)+"em";
-            document.querySelector(".minima-textbox").style.fontSize=newfontSize;
+            (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
           }
       });
     })
@@ -139,16 +140,16 @@ let hideText = () => {
 //code-block to decrease font size of text within textarea box
       selectionNode.querySelectorAll(".button-Neg").forEach((item:any)=>{
         item.addEventListener("click", ()=>{
-          let newfontSize = document.querySelector(".minima-textbox").style.fontSize;
+          let newfontSize = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize;
           if (newfontSize == "")
            {
              let newfontnum = 1;
              newfontSize = (newfontnum-=0.5)+"em";
-             document.querySelector(".minima-textbox").style.fontSize=newfontSize;
+             (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
           }else{
             let newfontnum=parseFloat(newfontSize);
             newfontSize = (newfontnum-=0.5)+"em";
-            document.querySelector(".minima-textbox").style.fontSize=newfontSize;
+            (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
           }
       });
     })
@@ -158,9 +159,9 @@ let hideText = () => {
        item.addEventListener("click", ()=>{
       
         console.log("Button Clicked: button-boldText")
-        let newfontWeight = ( document.querySelector(".minima-textbox").style.fontWeight == "bold") ? "normal" : "bold";
+        let newfontWeight = ( (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontWeight == "bold") ? "normal" : "bold";
         document.querySelector("textarea").style.fontWeight = newfontWeight;
-        console.log( document.querySelector(".minima-textbox").style.fontWeight)
+        console.log( (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontWeight)
        
       });
     })
@@ -170,8 +171,8 @@ let hideText = () => {
     selectionNode.querySelectorAll(".button-italicText").forEach((item:any)=>{
        item.addEventListener("click", ()=>{
         console.log("Button Clicked: button-italicText")
-        let newfontStyle = (document.querySelector(".minima-textbox").style.fontStyle == "italic") ? "normal" : "italic";
-        document.querySelector(".minima-textbox").style.fontStyle = newfontStyle;
+        let newfontStyle = ((<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontStyle == "italic") ? "normal" : "italic";
+        (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontStyle = newfontStyle;
         //console.log(document.querySelector("textarea").style.fontStyle)
       });
     })
@@ -181,16 +182,16 @@ let hideText = () => {
     selectionNode.querySelectorAll(".button-underlineText").forEach((item:any)=>{
        item.addEventListener("click", ()=>{
          console.log("Button Clicked: button-underlineText")
-         let newtextDecoration = (document.querySelector(".minima-textbox").style.textDecoration == "underline") ? "none" : "underline";
-        document.querySelector(".minima-textbox").style.textDecoration = newtextDecoration;
+         let newtextDecoration = ((<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.textDecoration == "underline") ? "none" : "underline";
+         (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.textDecoration = newtextDecoration;
       });
     })
 
     //code block that updates the fontfamily within the editor box.
     selectionNode.querySelectorAll(".select-fontfamilySelect").forEach((item:any)=>{
        item.addEventListener("change", ()=>{
-      document.querySelector(".minima-textbox").style.fontFamily = (<HTMLInputElement>document.querySelector(".select-fontfamilySelect")).value;
-      console.log('fontfamilyselect')
+        (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontFamily = (<HTMLInputElement>document.querySelector(".select-fontfamilySelect")).value;
+        console.log('fontfamilyselect')
 
     });
   })
@@ -203,7 +204,7 @@ let hideText = () => {
       
        item.addEventListener("click", ()=>{
        let hideText = document.querySelector(".button-hideText");
-       hideText.innerText  = (hideText.innerText =="Hide")? 'Show': 'Hide';
+       (<HTMLButtonElement>hideText).innerText  = ((<HTMLButtonElement>hideText).innerText =="Hide")? 'Show': 'Hide';
        console.log("button clicked: hide text");
         sp1.classList.toggle("hidden_text");
         if ( editbox_text.value) {
@@ -230,10 +231,10 @@ let hideText = () => {
 
         
        
-       picker.on_done = function(colour) {
+       picker.on_done = function(colour: any) {
          
-         parent.style.background = colour.rgba().toString();
-         document.querySelector(".minima-textbox").style.color = colour.rgba().toString();
+         (<HTMLButtonElement>parent).style.background = colour.rgba().toString();
+         (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.color = colour.rgba().toString();
          //console.log(colour.rgba().toString())
          let rgba = colour.rgba();
        }
@@ -252,19 +253,19 @@ let hideText = () => {
     const sp1 = document.createElement('span');
     selectionNode.querySelectorAll(".button-save").forEach((item:any)=>{
         item.addEventListener("click", ()=>{
-           let newfontSize= document.querySelector(".minima-textbox").style.fontSize;
-           let newfontStyle = document.querySelector(".minima-textbox").style.fontStyle;
-           let newfontWeight = document.querySelector(".minima-textbox").style.fontWeight;
-           let newtextDecoration = document.querySelector(".minima-textbox").style.textDecoration;
+           let newfontSize= (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize;
+           let newfontStyle = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontStyle;
+           let newfontWeight = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontWeight;
+           let newtextDecoration = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.textDecoration;
            let newfontFamily = (<HTMLInputElement>document.querySelector(".select-fontfamilySelect")).value;
-           let newfontColor = document.querySelector(".minima-textbox").style.color;
+           let newfontColor = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.color;
            let newText_textarea:string = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).value;
            //let newText_textarea = newText_textareaElement.value;
 
            
            let newText_session  = session_text.getItem("text");
 
-           let newText_textarea = (newText_textarea == "") ? newText_session : newText_textarea;
+           newText_textarea = (newText_textarea == "") ? newText_session : newText_textarea;
            console.log(newText_session)
            console.log(newText_textarea);
 
@@ -308,7 +309,7 @@ let hideText = () => {
            console.log("clicked: cancelButton")
         });
      })
-  }
+  
   }
 };
 
