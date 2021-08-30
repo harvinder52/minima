@@ -3,7 +3,7 @@ A bunch of tools for futzing with the web so I can shoot videos of new features
 
 ## Plugins
 
-### Hide Text
+### Text
  Full Fledged text editor that can style and replace the highlighted text on any webpage.
  How to use:
  1. Just highlight some text on a page.
