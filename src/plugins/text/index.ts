@@ -63,7 +63,7 @@ let hideText = () => {
 
 
         const colorPicker = document.createElement("button");
-        colorPicker.innerText ='C:';
+        colorPicker.innerText ='Color';
         colorPicker.classList.add('colorPicker')
         
         
@@ -100,6 +100,12 @@ let hideText = () => {
         textArea.classList.add("minima-textbox")
         const setText = (text:string) => {
         textArea.innerText = text;
+        textArea.style.color = selectionNode.style.color;
+        textArea.style.fontSize = selectionNode.style.fontSize;
+        textArea.style.fontStyle = selectionNode.style.fontStyle;
+        textArea.style.fontWeight = selectionNode.style.fontWeight;
+        textArea.style.textDecoration = selectionNode.style.textDecoration;
+        textArea.style.fontFamily = selectionNode.style.fontFamily
         } 
 
 
