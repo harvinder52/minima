@@ -4,8 +4,10 @@ A bunch of tools for futzing with the web so I can shoot videos of new features
 ## Plugins
 
 ### Hide Text
-
-Activate by selecting text and double-tapping control. A class will be added to make the text visible only on hover, slowly.
+ Full Fledged text editor that can style and replace the highlighted text on any webpage.
+ How to use:
+ 1. Just highlight some text on a page.
+ 2. Activate/Deactivate by double pressing control key.
 
 ### Replace Image 
 Activate by holding shift and clicking on the image. A gallery of images will populate the screen and you can select a image that you'd like to replace the original image.
