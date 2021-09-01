@@ -12,20 +12,31 @@
 .button-boldText{
     position: absolute;
     cursor: pointer;
-    left: 84%;
+    left: 82%;
     top: 14%;
+    width: 5%;
+    color: white;
+    background-color: gray;
   }
+
+
 .button-italicText{
     position: absolute;
     cursor: pointer;
-    left: 89%;
+    left: 88%;
     top: 14%;
+    width: 5%;
+    color: white;
+    background-color: gray;
   }
 .button-underlineText{
     position: absolute;
     cursor: pointer;
     left: 94%;
     top: 14%;
+    width: 5%;
+    color: white;
+    background-color: gray;
   }
 .button-hideText{
       font-size: 0.75em;
@@ -35,6 +46,7 @@
       cursor: pointer;
       width: 15%
 
+
     }
 
 .button-Add {
@@ -42,6 +54,7 @@
       position: absolute;
       top: 34%;
       left: 85%;
+      width: 5%;
       border-radius: 2px;
       text-shadow: 1px 1px white;
       background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
@@ -53,6 +66,7 @@
       position: absolute;
       top: 34%;
       left: 91%;
+      width: 5%;
       border-radius: 2px;
       text-shadow: 1px 1px white;
       background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
@@ -65,25 +79,35 @@
       position: absolute;
       left: 83%;
       cursor: pointer;
-      width: 15%
+      width: 15%;
+      color: white;
+      background-color: green;
+      border-radius: 0.5em;
 
       
     }
-    .button-cancel{
+   #button-cancel{
 
       
       top: 80%;
       position: absolute;
       left: 83%;
       cursor: pointer;
-      width: 15%
+      width: 15%;
+      color: white;
+      background-color: red;
+      border-radius: 0.5em;
+
     }
 
 .colorPicker{
       position: absolute;
       top: 44%;
       left: 83%;
+      width: 15%;
       cursor: pointer;
+      color: white;
+      background-color: black;
     }
 
 
@@ -129,14 +153,29 @@
       box-shadow: 0px 0px 0px 1px rgba(0,0,0,.18), 0px 18px 50px rgba(0,0,0,.5);
       
       height: 2em;
-      background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
+      /*background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
+      */
+      background-color: purple;
     }
+
+ #titleBarcancelButton{
+      position: absolute;
+      left: 95%;
+      cursor: pointer;
+      width: 3%;
+      color:white;
+      background-color: red;
+      border-radius: 0.5em;
+
+ }
 .undercont{
       position: relative;
       height: inherit;
       box-shadow: 0px 0px 0px 1px rgba(0,0,0,.18), 0px 18px 50px rgba(0,0,0,.5);
       border-radius: 0 0 1em 1em;
-      background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
+     /* background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
+    */
+    background: gray;
     }
 
 

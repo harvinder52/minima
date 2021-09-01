@@ -75,8 +75,15 @@ let hideText = () => {
         saveButton.innerText = 'Save';
 
         const cancelButton = document.createElement('button');
+        cancelButton.id = "button-cancel";
         cancelButton.classList.add("button-cancel");
         cancelButton.innerText ='Cancel';
+
+        const titleBarcancelButton = document.createElement('button');
+        titleBarcancelButton.id = "titleBarcancelButton";
+        titleBarcancelButton.classList.add("button-cancel");
+        titleBarcancelButton.innerText ='x';
+
 
         
 
@@ -106,6 +113,7 @@ let hideText = () => {
         textArea.style.fontWeight = selectionNode.style.fontWeight;
         textArea.style.textDecoration = selectionNode.style.textDecoration;
         textArea.style.fontFamily = selectionNode.style.fontFamily
+       
         } 
 
 
@@ -116,6 +124,7 @@ let hideText = () => {
         setText(selectionText);
 
         selectionNode.append(minima_textEditor);
+        titleBar.append(titleBarcancelButton);
         minima_textEditor.append(titleBar);
         titleBar.insertAdjacentElement("afterend", undercont);
 
@@ -141,11 +150,11 @@ let hideText = () => {
           let newfontSize:string = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize;
           if (newfontSize == ""){
              let newfontnum:number = 1;
-             newfontSize = (newfontnum+=0.5)+"em";
+             newfontSize = (newfontnum+=0.5)+"rem";
              (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
           }else{
              let newfontnum:number =parseFloat(newfontSize);
-             newfontSize = (newfontnum+=0.5)+"em";
+             newfontSize = (newfontnum+=0.5)+"rem";
             (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
           }
       });
@@ -158,11 +167,11 @@ let hideText = () => {
           if (newfontSize == "")
            {
              let newfontnum = 1;
-             newfontSize = (newfontnum-=0.5)+"em";
+             newfontSize = (newfontnum-=0.5)+"rem";
              (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
           }else{
             let newfontnum=parseFloat(newfontSize);
-            newfontSize = (newfontnum-=0.5)+"em";
+            newfontSize = (newfontnum-=0.5)+"rem";
             (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
           }
       });
@@ -173,6 +182,8 @@ let hideText = () => {
        item.addEventListener("click", ()=>{
       
         console.log("Button Clicked: button-boldText")
+        let buttonColor = ((<HTMLTextAreaElement>document.querySelector(".button-boldText")).style.backgroundColor == 'blue')? "gray": "blue";
+         (<HTMLTextAreaElement>document.querySelector(".button-boldText")).style.backgroundColor = buttonColor;
         let newfontWeight = ( (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontWeight == "bold") ? "normal" : "bold";
         document.querySelector("textarea").style.fontWeight = newfontWeight;
         console.log( (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontWeight)
@@ -185,6 +196,8 @@ let hideText = () => {
     selectionNode.querySelectorAll(".button-italicText").forEach((item:any)=>{
        item.addEventListener("click", ()=>{
         console.log("Button Clicked: button-italicText")
+        let buttonColor = ((<HTMLTextAreaElement>document.querySelector(".button-italicText")).style.backgroundColor == 'blue')? "gray": "blue";
+         (<HTMLTextAreaElement>document.querySelector(".button-italicText")).style.backgroundColor = buttonColor;
         let newfontStyle = ((<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontStyle == "italic") ? "normal" : "italic";
         (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontStyle = newfontStyle;
         //console.log(document.querySelector("textarea").style.fontStyle)
@@ -195,7 +208,9 @@ let hideText = () => {
     //code block that makes text go underline;
     selectionNode.querySelectorAll(".button-underlineText").forEach((item:any)=>{
        item.addEventListener("click", ()=>{
-         console.log("Button Clicked: button-underlineText")
+         console.log("Button Clicked: button-underlineText");
+         let buttonColor = ((<HTMLTextAreaElement>document.querySelector(".button-underlineText")).style.backgroundColor == 'blue')? "gray": "blue";
+         (<HTMLTextAreaElement>document.querySelector(".button-underlineText")).style.backgroundColor = buttonColor;
          let newtextDecoration = ((<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.textDecoration == "underline") ? "none" : "underline";
          (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.textDecoration = newtextDecoration;
       });
