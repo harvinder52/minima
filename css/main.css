@@ -81,7 +81,7 @@
       cursor: pointer;
       width: 15%;
       color: white;
-      background-color: green;
+      background-color: darkgreen;
       border-radius: 0.5em;
 
       
@@ -95,7 +95,7 @@
       cursor: pointer;
       width: 15%;
       color: white;
-      background-color: red;
+      background-color: brown;
       border-radius: 0.5em;
 
     }
@@ -120,6 +120,7 @@
       height: 87%;
       max-width: 78%;
       max-height: 87%;
+      color: : gray;
 
  }
  .select-fontfamilySelect{
@@ -153,18 +154,17 @@
       box-shadow: 0px 0px 0px 1px rgba(0,0,0,.18), 0px 18px 50px rgba(0,0,0,.5);
       
       height: 2em;
-      /*background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
-      */
-      background-color: purple;
+      background: -moz-linear-gradient(top, hsla(0, 0%, 95%,.98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
+      
     }
 
  #titleBarcancelButton{
       position: absolute;
       left: 95%;
       cursor: pointer;
-      width: 3%;
+      width: 4%;
       color:white;
-      background-color: red;
+      background-color: brown;
       border-radius: 0.5em;
 
  }
@@ -173,9 +173,9 @@
       height: inherit;
       box-shadow: 0px 0px 0px 1px rgba(0,0,0,.18), 0px 18px 50px rgba(0,0,0,.5);
       border-radius: 0 0 1em 1em;
-     /* background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
-    */
-    background: gray;
+      background: -moz-linear-gradient(top, hsla(0, 0%, 92%, .98), hsla(0, 0%, 71%, .95)), url(noise-hard.png);
+      
+     
     }
 
 

@@ -65,6 +65,7 @@ let hideText = () => {
         const colorPicker = document.createElement("button");
         colorPicker.innerText ='Color';
         colorPicker.classList.add('colorPicker')
+
         
         
 
@@ -96,7 +97,7 @@ let hideText = () => {
 
         let titleBar = document.createElement('div');
         titleBar.classList.add("titleBar")
-        titleBar.innerText ="Minima - Text Editor v1.0.1"
+        titleBar.innerText ="Minima - Text Editor v1.0.1 (DEMO UI)"
 
         let undercont = document.createElement("div");
         undercont.classList.add("undercont");
@@ -113,7 +114,8 @@ let hideText = () => {
         textArea.style.fontWeight = selectionNode.style.fontWeight;
         textArea.style.textDecoration = selectionNode.style.textDecoration;
         textArea.style.fontFamily = selectionNode.style.fontFamily
-       
+
+
         } 
 
 
@@ -127,7 +129,7 @@ let hideText = () => {
         titleBar.append(titleBarcancelButton);
         minima_textEditor.append(titleBar);
         titleBar.insertAdjacentElement("afterend", undercont);
-
+        colorPicker.style.backgroundColor = selectionNode.style.color;
         //undercont.append( fontfamilySelect, hideText, colorPicker, saveButton, cancelButton);
         undercont.appendChild(textArea);
         undercont.appendChild(addButtonAdd);
