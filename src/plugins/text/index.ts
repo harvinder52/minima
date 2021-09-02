@@ -1,5 +1,6 @@
 import '@simonwep/pickr/dist/themes/monolith.min.css'; 
 import Pickr from '@simonwep/pickr';
+import dragElement from './dragElementFunc';
 
 
 let name = 'Text';
@@ -21,6 +22,8 @@ let hideText = () => {
      textEditor(selection);
   }
 }
+dragElement(document.querySelector(".minima-text-editor"));
+
   function textEditor(selection: any){
         console.log(selection.toString())
 
@@ -93,11 +96,14 @@ let hideText = () => {
         
         let minima_textEditor = document.createElement("div");
         minima_textEditor.classList.add("minima-text-editor");
-
+        minima_textEditor.id = "minima-text-editor";
+        
 
         let titleBar = document.createElement('div');
         titleBar.classList.add("titleBar")
         titleBar.innerText ="Minima - Text Editor v1.0.1 (DEMO UI)"
+        titleBar.classList.add("tracking-in-contract-bck");
+
 
         let undercont = document.createElement("div");
         undercont.classList.add("undercont");
@@ -106,6 +112,7 @@ let hideText = () => {
 
         const textArea = document.createElement('textarea');
         textArea.classList.add("minima-textbox")
+        textArea.classList.add("tracking-in-expand");
         const setText = (text:string) => {
         textArea.innerText = text;
         textArea.style.color = selectionNode.style.color;
@@ -129,6 +136,7 @@ let hideText = () => {
         titleBar.append(titleBarcancelButton);
         minima_textEditor.append(titleBar);
         titleBar.insertAdjacentElement("afterend", undercont);
+
         colorPicker.style.backgroundColor = selectionNode.style.color;
         //undercont.append( fontfamilySelect, hideText, colorPicker, saveButton, cancelButton);
         undercont.appendChild(textArea);
@@ -142,6 +150,7 @@ let hideText = () => {
         undercont.appendChild(colorPicker);
         undercont.appendChild(saveButton);
         undercont.appendChild(cancelButton);
+        
        
 
         //selectionNode.innerHTML = selectionNode.innerHTML.replace(selectionText,minima_textEditor.outerHTML);
