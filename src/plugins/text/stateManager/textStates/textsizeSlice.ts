@@ -22,6 +22,6 @@ export const text_sizeSlice = createSlice({
   },
 })
 
-export const textsize  = (state: RootState) => state.root.value;
+export const textsizeSelector  = (state: RootState) => state.root.value;
 export const { increment, decrement } = text_sizeSlice.actions
 export default text_sizeSlice.reducer

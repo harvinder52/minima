@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import textsizeReducer from './textStates/textsizeSlice'
-import {textsize} from './textStates/textsizeSlice'
+import {textsizeSelector} from './textStates/textsizeSlice'
 
 export const store = configureStore({
   reducer: {

@@ -2,7 +2,7 @@ import '@simonwep/pickr/dist/themes/monolith.min.css';
 import Pickr from '@simonwep/pickr';
 import dragElement from './dragElementFunc';
 import store from './stateManager/store';
-import  {textsize} from  './stateManager/textStates/textsizeSlice'
+import  {textsizeSelector} from  './stateManager/textStates/textsizeSlice'
 
 
 
@@ -164,16 +164,18 @@ dragElement(document.querySelector(".minima-text-editor"));
   //code-block that increases font size within textarea box
       addButtonAdd.addEventListener("click", ()=>{
         store.dispatch(increment())
-        let size = textsize(store.getState())
+       
+        })
+      
+
+      const unsubscribe = store.subscribe(() => {
+        let size = textsizeSelector(store.getState())
         let newfontnum:string = size+"rem";
         (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontnum;
-        })
+      })
      
       addButtonNeg.addEventListener("click", ()=>{
         store.dispatch(decrement())
-        let size = textsize(store.getState())
-        let newfontnum:string = size+"rem";
-        (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontnum;
         })
   
   
