@@ -2,7 +2,7 @@ import '@simonwep/pickr/dist/themes/monolith.min.css';
 import Pickr from '@simonwep/pickr';
 import dragElement from './dragElementFunc';
 import store from './stateManager/store';
-import  textsize from  './stateManager/textStates/textsizeSlice'
+import  {textsize} from  './stateManager/textStates/textsizeSlice'
 
 
 
@@ -163,31 +163,25 @@ dragElement(document.querySelector(".minima-text-editor"));
        
   //code-block that increases font size within textarea box
       addButtonAdd.addEventListener("click", ()=>{
+        store.dispatch(increment())
         let size = textsize(store.getState())
-        console.log(size)
-                             
+        let newfontnum:string = size+"rem";
+        (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontnum;
         })
      
+      addButtonNeg.addEventListener("click", ()=>{
+        store.dispatch(decrement())
+        let size = textsize(store.getState())
+        let newfontnum:string = size+"rem";
+        (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontnum;
+        })
   
   
 
 
 //code-block to decrease font size of text within textarea box
-      selectionNode.querySelectorAll(".button-Neg").forEach((item:any)=>{
-        item.addEventListener("click", ()=>{
-          let newfontSize = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize;
-          if (newfontSize == "")
-           {
-             let newfontnum = 1;
-             newfontSize = (newfontnum-=0.5)+"rem";
-             (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
-          }else{
-            let newfontnum=parseFloat(newfontSize);
-            newfontSize = (newfontnum-=0.5)+"rem";
-            (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
-          }
-      });
-    })
+      
+      
 
     //code block that makes text go Bold;
     selectionNode.querySelectorAll(".button-boldText").forEach((item:any)=>{

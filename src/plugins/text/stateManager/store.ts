@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import textsize from './textStates/textsizeSlice'
+import textsizeReducer from './textStates/textsizeSlice'
+import {textsize} from './textStates/textsizeSlice'
 
 export const store = configureStore({
   reducer: {
-    root: textsize
+    root: textsizeReducer
   },
 })
 
