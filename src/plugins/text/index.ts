@@ -1,6 +1,12 @@
 import '@simonwep/pickr/dist/themes/monolith.min.css'; 
 import Pickr from '@simonwep/pickr';
 import dragElement from './dragElementFunc';
+import store from './stateManager/store';
+import  textsize from  './stateManager/textStates/textsizeSlice'
+
+
+
+import { decrement, increment } from './stateManager/textStates/textsizeSlice'
 
 
 let name = 'Text';
@@ -156,20 +162,15 @@ dragElement(document.querySelector(".minima-text-editor"));
         //selectionNode.innerHTML = selectionNode.innerHTML.replace(selectionText,minima_textEditor.outerHTML);
        
   //code-block that increases font size within textarea box
-      selectionNode.querySelectorAll(".button-Add").forEach((item:any)=>{
-        item.addEventListener("click", ()=>{
-          let newfontSize:string = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize;
-          if (newfontSize == ""){
-             let newfontnum:number = 1;
-             newfontSize = (newfontnum+=0.5)+"rem";
-             (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
-          }else{
-             let newfontnum:number =parseFloat(newfontSize);
-             newfontSize = (newfontnum+=0.5)+"rem";
-            (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontSize;
-          }
-      });
-    })
+      addButtonAdd.addEventListener("click", ()=>{
+        let size = textsize(store.getState())
+        console.log(size)
+                             
+        })
+     
+  
+  
+
 
 //code-block to decrease font size of text within textarea box
       selectionNode.querySelectorAll(".button-Neg").forEach((item:any)=>{
