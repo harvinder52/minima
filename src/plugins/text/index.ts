@@ -164,20 +164,19 @@ dragElement(document.querySelector(".minima-text-editor"));
   //code-block that increases font size within textarea box
       addButtonAdd.addEventListener("click", ()=>{
         store.dispatch(increment())
-       
-        })
+       })
       
-
+       addButtonNeg.addEventListener("click", ()=>{
+        store.dispatch(decrement())
+        })
+  
       const unsubscribe = store.subscribe(() => {
         let size = textsizeSelector(store.getState())
         let newfontnum:string = size+"rem";
         (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontnum;
       })
      
-      addButtonNeg.addEventListener("click", ()=>{
-        store.dispatch(decrement())
-        })
-  
+     
   
 
 
