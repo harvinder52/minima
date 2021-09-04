@@ -1,14 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import textsizeReducer from './textStates/textsizeSlice'
-import {textsizeSelector} from './textStates/textsizeSlice'
+import textStyleReducer from  './textStates/textSyleSlice'
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    root: textsizeReducer
-  },
+    textsize: textsizeReducer,
+    textStyle: textStyleReducer
+  }
 })
-
-
 
 export default store
 export type RootState = ReturnType<typeof store.getState>

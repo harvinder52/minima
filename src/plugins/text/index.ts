@@ -3,8 +3,8 @@ import Pickr from '@simonwep/pickr';
 import dragElement from './dragElementFunc';
 import store from './stateManager/store';
 import  {textsizeSelector} from  './stateManager/textStates/textsizeSlice'
-
-
+import {addButtonAdd, addButtonNeg} from './editorModules/textSizeModule'
+import {boldText, italicText, underlineText} from './editorModules/textStyleModule'
 
 import { decrement, increment } from './stateManager/textStates/textsizeSlice'
 
@@ -35,24 +35,9 @@ dragElement(document.querySelector(".minima-text-editor"));
 
 
    
-        const addButtonAdd = document.createElement('button');
-        addButtonAdd.classList.add("button-Add");
-        addButtonAdd.innerText = '+';    
-        const addButtonNeg = document.createElement('button');
-        addButtonNeg.classList.add("button-Neg");
-        addButtonNeg.innerText = '-';
+       
 
-        const boldText = document.createElement('button');
-        boldText.classList.add("button-boldText");
-        boldText.innerText = 'B';
-
-        const italicText = document.createElement('button');
-        italicText.classList.add("button-italicText");
-        italicText.innerText = 'I';
-
-        const underlineText = document.createElement('button');
-        underlineText.classList.add("button-underlineText");
-        underlineText.innerText = 'U';
+       
 
         const fontfamilySelect = document.createElement('select');
         fontfamilySelect.classList.add("select-fontfamilySelect");
@@ -161,68 +146,11 @@ dragElement(document.querySelector(".minima-text-editor"));
 
         //selectionNode.innerHTML = selectionNode.innerHTML.replace(selectionText,minima_textEditor.outerHTML);
        
-  //code-block that increases font size within textarea box
-      addButtonAdd.addEventListener("click", ()=>{
-        store.dispatch(increment())
-       })
-      
-       addButtonNeg.addEventListener("click", ()=>{
-        store.dispatch(decrement())
-        })
-  
-      const unsubscribe = store.subscribe(() => {
-        let size = textsizeSelector(store.getState())
-        let newfontnum:string = size+"rem";
-        (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize=newfontnum;
-      })
-     
-     
-  
-
-
-//code-block to decrease font size of text within textarea box
-      
+   
       
 
     //code block that makes text go Bold;
-    selectionNode.querySelectorAll(".button-boldText").forEach((item:any)=>{
-       item.addEventListener("click", ()=>{
-      
-        console.log("Button Clicked: button-boldText")
-        let buttonColor = ((<HTMLTextAreaElement>document.querySelector(".button-boldText")).style.backgroundColor == 'blue')? "gray": "blue";
-         (<HTMLTextAreaElement>document.querySelector(".button-boldText")).style.backgroundColor = buttonColor;
-        let newfontWeight = ( (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontWeight == "bold") ? "normal" : "bold";
-        document.querySelector("textarea").style.fontWeight = newfontWeight;
-        console.log( (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontWeight)
-       
-      });
-    })
-
-
-    //code block that makes text go italic;
-    selectionNode.querySelectorAll(".button-italicText").forEach((item:any)=>{
-       item.addEventListener("click", ()=>{
-        console.log("Button Clicked: button-italicText")
-        let buttonColor = ((<HTMLTextAreaElement>document.querySelector(".button-italicText")).style.backgroundColor == 'blue')? "gray": "blue";
-         (<HTMLTextAreaElement>document.querySelector(".button-italicText")).style.backgroundColor = buttonColor;
-        let newfontStyle = ((<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontStyle == "italic") ? "normal" : "italic";
-        (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontStyle = newfontStyle;
-        //console.log(document.querySelector("textarea").style.fontStyle)
-      });
-    })
-
-
-    //code block that makes text go underline;
-    selectionNode.querySelectorAll(".button-underlineText").forEach((item:any)=>{
-       item.addEventListener("click", ()=>{
-         console.log("Button Clicked: button-underlineText");
-         let buttonColor = ((<HTMLTextAreaElement>document.querySelector(".button-underlineText")).style.backgroundColor == 'blue')? "gray": "blue";
-         (<HTMLTextAreaElement>document.querySelector(".button-underlineText")).style.backgroundColor = buttonColor;
-         let newtextDecoration = ((<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.textDecoration == "underline") ? "none" : "underline";
-         (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.textDecoration = newtextDecoration;
-      });
-    })
-
+  
     //code block that updates the fontfamily within the editor box.
     selectionNode.querySelectorAll(".select-fontfamilySelect").forEach((item:any)=>{
        item.addEventListener("change", ()=>{
@@ -261,23 +189,7 @@ dragElement(document.querySelector(".minima-text-editor"));
        console.log("clicked on color picker")
        let parent = document.querySelector(".colorPicker");
 
-      /* let parent = document.querySelector(".colorPicker"); 
-        
-       let picker: Picker = new Picker({parent: (parent), orientation: ( 'center'), x:(-300), y: (-100)});
-
-        
-       
-       picker.on_done = function(colour: any) {
-         
-         (<HTMLButtonElement>parent).style.background = colour.rgba().toString();
-         (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.color = colour.rgba().toString();
-         //console.log(colour.rgba().toString())
-         let rgba = colour.rgba();
-       }
-       
-        
-        picker.show();
-        */
+      
        const pickr = Pickr.create({
        el: '.colorPicker',
        theme: 'monolith',
@@ -334,12 +246,8 @@ dragElement(document.querySelector(".minima-text-editor"));
     const sp1 = document.createElement('span');
     selectionNode.querySelectorAll(".button-save").forEach((item:any)=>{
         item.addEventListener("click", ()=>{
-           let newfontSize= (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize;
-           let newfontStyle = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontStyle;
-           let newfontWeight = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontWeight;
-           let newtextDecoration = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.textDecoration;
-           let newfontFamily = (<HTMLInputElement>document.querySelector(".select-fontfamilySelect")).value;
-           let newfontColor = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.color;
+           //let newfontSize= (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize;
+          
            let newText_textarea:string = (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).value;
            //let newText_textarea = newText_textareaElement.value;
 
@@ -360,12 +268,12 @@ dragElement(document.querySelector(".minima-text-editor"));
 
            //todo -- no need to create new variables, just assign the sp1 property directly from textarea.
            sp1.innerText = newText_textarea;
-           sp1.style.fontSize = newfontSize;
-           sp1.style.fontStyle = newfontStyle;
-           sp1.style.fontWeight = newfontWeight;
-           sp1.style.textDecoration = newtextDecoration;
-           sp1.style.fontFamily = newfontFamily;
-           sp1.style.color = newfontColor;
+           sp1.style.fontSize = textArea.style.fontSize;
+           sp1.style.fontStyle = textArea.style.fontStyle;
+           sp1.style.fontWeight = textArea.style.fontWeight;
+           sp1.style.textDecoration = textArea.style.textDecoration;
+           sp1.style.fontFamily = textArea.style.fontFamily;
+           sp1.style.color = textArea.style.color;
            
 
            
@@ -394,11 +302,6 @@ dragElement(document.querySelector(".minima-text-editor"));
   }
 };
 
-let disableEditor = () => {
-  if (document.querySelector(".minima_textEditor")){
-    console.log("truthy")
-  }
-}
 
 let enable = () => {
   document.addEventListener('minima.ctrlDoublePressed', hideText);
