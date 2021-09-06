@@ -2,11 +2,9 @@ import '@simonwep/pickr/dist/themes/monolith.min.css';
 import Pickr from '@simonwep/pickr';
 import dragElement from './dragElementFunc';
 import store from './stateManager/store';
-import  {textsizeSelector} from  './stateManager/textStates/textsizeSlice'
 import {addButtonAdd, addButtonNeg} from './editorModules/textSizeModule'
 import {boldText, italicText, underlineText} from './editorModules/textStyleModule'
-
-import { decrement, increment } from './stateManager/textStates/textsizeSlice'
+import  {fontfamilySelect} from './editorModules/fontFamilyModule'
 
 
 let name = 'Text';
@@ -39,17 +37,7 @@ dragElement(document.querySelector(".minima-text-editor"));
 
        
 
-        const fontfamilySelect = document.createElement('select');
-        fontfamilySelect.classList.add("select-fontfamilySelect");
-        let fontfamilies = ["Times New Roman", "Times", "serif", "Arial", "Helvetica", "sans-serif", "Impact", "Charcoal"];
-
-        for ( let font of fontfamilies){
-          const optionFont = document.createElement("option");
-          optionFont.innerText = font;
-          optionFont.value = font;
-          fontfamilySelect.append(optionFont)
-
-        }
+        
 
         const hideText = document.createElement("button");
         hideText.classList.add("button-hideText");
@@ -152,13 +140,7 @@ dragElement(document.querySelector(".minima-text-editor"));
     //code block that makes text go Bold;
   
     //code block that updates the fontfamily within the editor box.
-    selectionNode.querySelectorAll(".select-fontfamilySelect").forEach((item:any)=>{
-       item.addEventListener("change", ()=>{
-        (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontFamily = (<HTMLInputElement>document.querySelector(".select-fontfamilySelect")).value;
-        console.log('fontfamilyselect')
-
-    });
-  })
+    
     //document.querySelector("textarea").style.fontFamily = document.querySelector(".select-fontfamilySelect").value;
     
     //code that adds hidden_text class to text.
