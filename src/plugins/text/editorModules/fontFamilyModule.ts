@@ -14,10 +14,9 @@ export  const fontfamilySelect = document.createElement('select');
 
         }
         fontfamilySelect.addEventListener("change", ()=> {
-	     store.dispatch(fontFamilyChange(fontfamilySelect.value))
+	        store.dispatch(fontFamilyChange(fontfamilySelect.value)),
+          (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontFamily = currentFontFamily(store.getState());
+         
         })
 
-        const unsubscribeFontFamily = store.subscribe(() => {
-        (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontFamily = currentFontFamily(store.getState());
-         })
-     
+       

@@ -6,7 +6,7 @@ interface fontFamily{
 }
 
 const initialState: fontFamily = {
-	currentFontFamily: "arial" 
+	currentFontFamily: "" 
  }
 
  export const fontFamilySlice = createSlice({

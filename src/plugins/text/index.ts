@@ -5,14 +5,20 @@ import store from './stateManager/store';
 import {addButtonAdd, addButtonNeg} from './editorModules/textSizeModule'
 import {boldText, italicText, underlineText} from './editorModules/textStyleModule'
 import  {fontfamilySelect} from './editorModules/fontFamilyModule'
+import {hideTextValue} from './stateManager/textStates/hideTextSlice'
+import  {hideText} from './editorModules/hideTextModule'
+
 
 
 let name = 'Text';
+export const editedTextDiv = document.createElement('span');
 
 
-let hideText = () => {
+let textEditor = () => {
   let selection = window.getSelection();
+  
   console.log(selection.toString())
+  
   
   if (selection.toString() === "") {
     console.log("Selection Error");
@@ -39,10 +45,7 @@ dragElement(document.querySelector(".minima-text-editor"));
 
         
 
-        const hideText = document.createElement("button");
-        hideText.classList.add("button-hideText");
-        hideText.innerText ='Hide';
-
+      
 
         const colorPicker = document.createElement("button");
         colorPicker.innerText ='Color';
@@ -91,32 +94,36 @@ dragElement(document.querySelector(".minima-text-editor"));
 
         const textArea = document.createElement('textarea');
         textArea.classList.add("minima-textbox")
-        textArea.classList.add("tracking-in-expand");
+       
         const setText = (text:string) => {
-        textArea.innerText = text;
-        textArea.style.color = selectionNode.style.color;
-        textArea.style.fontSize = selectionNode.style.fontSize;
-        textArea.style.fontStyle = selectionNode.style.fontStyle;
-        textArea.style.fontWeight = selectionNode.style.fontWeight;
-        textArea.style.textDecoration = selectionNode.style.textDecoration;
-        textArea.style.fontFamily = selectionNode.style.fontFamily
-
-
+          textArea.innerText = text;
+          textArea.style.color = selectionNode.style.color;
+          textArea.style.fontSize = selectionNode.style.fontSize;
+          textArea.style.fontStyle = selectionNode.style.fontStyle;
+          textArea.style.fontWeight = selectionNode.style.fontWeight;
+          textArea.style.textDecoration = selectionNode.style.textDecoration;
+          textArea.style.fontFamily = selectionNode.style.fontFamily
         } 
 
-
+        
         console.assert(selection.focusNode == selection.anchorNode);
         let selectionNode = selection.anchorNode.parentElement;
         console.log(selection.anchorNode.parentElement);
         let selectionText = selection.toString();
         setText(selectionText);
+        hideText.innerText  = (selectionNode.className == "hidden_text")? 'Show': 'Hide';
 
-        selectionNode.append(minima_textEditor);
+        document.body.append(minima_textEditor);
         titleBar.append(titleBarcancelButton);
         minima_textEditor.append(titleBar);
         titleBar.insertAdjacentElement("afterend", undercont);
 
         colorPicker.style.backgroundColor = selectionNode.style.color;
+        boldText.style.background = (selectionNode.style.fontWeight =="bold")? "blue": "gray";
+        italicText.style.background = (selectionNode.style.fontStyle =="italic")? "blue": "gray";
+        underlineText.style.background = (selectionNode.style.textDecoration =="underline")? "blue": "gray";
+       
+
         //undercont.append( fontfamilySelect, hideText, colorPicker, saveButton, cancelButton);
         undercont.appendChild(textArea);
         undercont.appendChild(addButtonAdd);
@@ -132,41 +139,17 @@ dragElement(document.querySelector(".minima-text-editor"));
         
        
 
-        //selectionNode.innerHTML = selectionNode.innerHTML.replace(selectionText,minima_textEditor.outerHTML);
+     
        
    
       
 
-    //code block that makes text go Bold;
-  
-    //code block that updates the fontfamily within the editor box.
-    
-    //document.querySelector("textarea").style.fontFamily = document.querySelector(".select-fontfamilySelect").value;
-    
-    //code that adds hidden_text class to text.
-    let session_text = window.sessionStorage;
-    let editbox_text = document.querySelector("textarea");
-    selectionNode.querySelectorAll(".button-hideText").forEach((item:any)=>{
-      
-       item.addEventListener("click", ()=>{
-       let hideText = document.querySelector(".button-hideText");
-       (<HTMLButtonElement>hideText).innerText  = ((<HTMLButtonElement>hideText).innerText =="Hide")? 'Show': 'Hide';
-       console.log("button clicked: hide text");
-        sp1.classList.toggle("hidden_text");
-        if ( editbox_text.value) {
-         session_text.setItem("text",  editbox_text.value);
-          editbox_text.value = "";
-
-        } else {
-           editbox_text.value = session_text.getItem("text");
-        }
-       
-
-    });
-  })
+ 
+   
+   
 
     //code block that loads the colorPicker
-    selectionNode.querySelectorAll(".colorPicker").forEach((item: any)=>{
+    document.body.querySelectorAll(".colorPicker").forEach((item: any)=>{
        item.addEventListener("click", ()=>{
        console.log("clicked on color picker")
        let parent = document.querySelector(".colorPicker");
@@ -225,8 +208,8 @@ dragElement(document.querySelector(".minima-text-editor"));
 
 
     //save button that saves the size of text and removes the box.
-    const sp1 = document.createElement('span');
-    selectionNode.querySelectorAll(".button-save").forEach((item:any)=>{
+   
+    document.body.querySelectorAll(".button-save").forEach((item:any)=>{
         item.addEventListener("click", ()=>{
            //let newfontSize= (<HTMLTextAreaElement>document.querySelector(".minima-textbox")).style.fontSize;
           
@@ -234,11 +217,14 @@ dragElement(document.querySelector(".minima-text-editor"));
            //let newText_textarea = newText_textareaElement.value;
 
            
-           let newText_session  = session_text.getItem("text");
+           let newText_session  =  hideTextValue(store.getState());
+           //console.log(hideTextValue(store.getState()))
 
            newText_textarea = (newText_textarea == "") ? newText_session : newText_textarea;
            console.log(newText_session)
-           console.log(newText_textarea);
+
+           editedTextDiv.className = (hideText.innerText == "Show")? "hidden_text": "";
+           //console.log(newText_textarea);
 
            
 
@@ -249,18 +235,18 @@ dragElement(document.querySelector(".minima-text-editor"));
 
 
            //todo -- no need to create new variables, just assign the sp1 property directly from textarea.
-           sp1.innerText = newText_textarea;
-           sp1.style.fontSize = textArea.style.fontSize;
-           sp1.style.fontStyle = textArea.style.fontStyle;
-           sp1.style.fontWeight = textArea.style.fontWeight;
-           sp1.style.textDecoration = textArea.style.textDecoration;
-           sp1.style.fontFamily = textArea.style.fontFamily;
-           sp1.style.color = textArea.style.color;
+           editedTextDiv.innerText = newText_textarea;
+           editedTextDiv.style.fontSize = textArea.style.fontSize;
+           editedTextDiv.style.fontStyle = textArea.style.fontStyle;
+           editedTextDiv.style.fontWeight = textArea.style.fontWeight;
+           editedTextDiv.style.textDecoration = textArea.style.textDecoration;
+           editedTextDiv.style.fontFamily = textArea.style.fontFamily;
+           editedTextDiv.style.color = textArea.style.color;
            
 
            
            //minima_textEditor.replaceWith(sp1);
-           selectionNode.innerHTML = selectionNode.innerHTML.replace(selectionText,sp1.outerHTML);
+           selectionNode.innerHTML = selectionNode.innerHTML.replace(selectionText,editedTextDiv.outerHTML);
 
            let minima_textEditor = document.querySelector('.minima-text-editor');
            minima_textEditor.remove();
@@ -269,7 +255,7 @@ dragElement(document.querySelector(".minima-text-editor"));
         });
      })
 
-    selectionNode.querySelectorAll(".button-cancel").forEach((item:any)=>{
+    document.body.querySelectorAll(".button-cancel").forEach((item:any)=>{
         item.addEventListener("click", ()=>{
            let minima_textEditor = document.querySelector('.minima-text-editor');
           
@@ -286,10 +272,10 @@ dragElement(document.querySelector(".minima-text-editor"));
 
 
 let enable = () => {
-  document.addEventListener('minima.ctrlDoublePressed', hideText);
+  document.addEventListener('minima.ctrlDoublePressed', textEditor);
 }
 let disable = () => {
-  document.removeEventListener('minima.ctrlDoublePressed', hideText);
+  document.removeEventListener('minima.ctrlDoublePressed', textEditor);
 }
 
 export default {
