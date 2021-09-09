@@ -3,6 +3,7 @@ import textsizeReducer from './textStates/textsizeSlice'
 import textStyleReducer from  './textStates/textSyleSlice'
 import fontFamilyReducer from './textStates/fontFamilySlice'
 import hideTextReducer from  './textStates/hideTextSlice'
+import textColorReducer from './textStates/textColorSlice'
 
 
 const store = configureStore({
@@ -10,7 +11,8 @@ const store = configureStore({
     textsize: textsizeReducer,
     textStyle: textStyleReducer,
     fontFamily: fontFamilyReducer,
-    hideText: hideTextReducer
+    hideText: hideTextReducer,
+    textColor: textColorReducer
   }
 })
 
