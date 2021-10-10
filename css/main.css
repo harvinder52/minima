@@ -7,6 +7,14 @@
   opacity: 1;
 }
 
+
+#mainContainerMinima{
+    position: absolute;
+    width: 350px;
+    height: 500px;
+    background-color: gray;
+  }
+
   
  
 .button-boldText{

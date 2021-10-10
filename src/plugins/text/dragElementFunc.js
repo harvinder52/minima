@@ -1,13 +1,13 @@
 function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  let  pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   
    if (document.querySelector(".titleBar")) {
-    // if present, the header is where you move the DIV from:
+   
    (document.querySelector(".titleBar")).onmousedown = dragMouseDown;
     console.log("titlebar")
   } else {
     // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
+   // elmnt.onmousedown = dragMouseDown;
     console.log("elmnt")
   }
 
