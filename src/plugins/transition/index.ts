@@ -1,3 +1,6 @@
+		
+
+
 let name = 'Transition';
 
 
@@ -15,17 +18,13 @@ let targetElement:any = null;
 		 easeInSlider.oninput = function(){
 		 spanX1.style.left = `${easeInSlider.value*3}px`
 		 context.canvas.width=context.canvas.width;
-    
-         drawCubicCurve()
 
+         drawCubicCurve()
          x1Line(parseInt(spanX1.style.top), parseInt(spanX1.style.left))
          y1Line(parseInt(spanY1.style.top), parseInt(spanY1.style.left))
+         cubicBezierValue((parseInt(spanX1.style.left)/300), (300-(parseInt(spanX1.style.top)))/300,  (parseInt(spanY1.style.left)/300), (300-(parseInt(spanY1.style.top)))/300 )}
 
 
-
-    
-    cubicBezierValue( (parseInt(spanX1.style.left)/300), (300-(parseInt(spanX1.style.top)))/300,  (parseInt(spanY1.style.left)/300), (300-(parseInt(spanY1.style.top)))/300 )
-		 }
 		 let easeOutSlider:any = document.createElement("input")
 		 easeOutSlider.id = "easeOutSlider"
 		 easeOutSlider.type= "range"
@@ -305,8 +304,7 @@ let targetElement:any = null;
 
  document.body.append(buttonCube,buttonCube2)
 
-
-   function cubicBezierValue( p1:any, p2:any, q1:any ,q2:any){
+ function cubicBezierValue( p1:any, p2:any, q1:any ,q2:any){
          
    	cubicSpan.innerText= `cubic-bezier(${p1.toFixed(2)},${p2.toFixed(2)},${q1.toFixed(2)},${q2.toFixed(2)})`
 
@@ -319,8 +317,7 @@ let targetElement:any = null;
    			
 
    }
-
-   function drawCubicCurve(){
+ function drawCubicCurve(){
    		
     
 
@@ -389,8 +386,13 @@ let targetElement:any = null;
 }
 
 
-document.body.addEventListener("dblclick", ()=>{
-	if (document.querySelector("#mainContainerMinima"))
+
+
+let startTransitionEditor = (event: MouseEvent) => {
+	
+	 if(event.altKey) {
+
+	 	if (document.querySelector("#mainContainerMinima"))
 
      {
        document.querySelector("#mainContainerMinima").remove();
@@ -398,29 +400,35 @@ document.body.addEventListener("dblclick", ()=>{
 		document.body.append(createEditor(event))
 		console.log("minima transition editor loaded")
 
-	}});
-let startTransitionEditor = () => {
+	};
+
+	  console.log(event.altKey)
+	  return true; 
+
+	}}
 	
-	if (document.querySelector("#mainContainerMinima"))
-
-     {
-       document.querySelector("#mainContainerMinima").remove();
-     }else{ 
+		
+	
+    
 	
 
-  };
+  
 
-}
+
 
 let enable = () => {
-  document.addEventListener('minima.ctrlDoublePressed', startTransitionEditor );
+  document.addEventListener('click', startTransitionEditor );
 }
 let disable = () => {
-  document.removeEventListener('minima.ctrlDoublePressed', startTransitionEditor  );
+  document.removeEventListener('click', startTransitionEditor  );
 }
 
 export default {
   name,
   enable,
-  disable
+  disable, 
+  cubicBezierValue,
+  y1Line,
+  x1Line,
+  drawCubicCurve
 };
