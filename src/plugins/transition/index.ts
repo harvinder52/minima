@@ -7,7 +7,7 @@ let name = 'Transition';
 let targetElement:any = null;
 
 		//transition UI starts with some events function defined for some buttons
-		//these UI elements can be written in pure HTML but i decided to just use only javasccript, 
+		//these UI elements can be written in pure HTML but i decided to just use only javasccript
 		//was trying to seperate these element out from this main code here, but for event fucntion i need to import functions, which 
 		//defeated the whole modular process.
 		 let easeInSlider:any = document.createElement("input")
