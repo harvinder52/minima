@@ -73,10 +73,9 @@ dragElement(document.querySelector(".minima-text-editor"));
         threedTextButton.setAttribute('style', 'position: absolute; top: 55%; left: 85%; z-index: 2;')
 
         threedTextButton.addEventListener("click", ()=>{
-            // textArea.setAttribute('style',
-            //  'text-shadow:    0 0 5px rgba(0,0,0,.05),0 1px 3px rgba(0,0,0,.2), 0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.2),0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.3);' )
-
-
+            textArea.setAttribute('style',
+             'text-shadow:    0 0 5px rgba(0,0,0,.05),0 1px 3px rgba(0,0,0,.2), 0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.2),0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.3);' )
+            
         })
 
 

@@ -6,7 +6,10 @@ let name = 'Transition';
 
 let targetElement:any = null;
 
-		
+		//transition UI starts with some events function defined for some buttons
+		//these UI elements can be written in pure HTML but i decided to just use only javasccript, 
+		//was trying to seperate these element out from this main code here, but for event fucntion i need to import functions, which 
+		//defeated the whole modular process.
 		 let easeInSlider:any = document.createElement("input")
 		 easeInSlider.id = "easeInSlider"
 		 easeInSlider.type= "range"
@@ -37,20 +40,14 @@ let targetElement:any = null;
 		 	spanY1.style.left = `${(100-easeOutSlider.value)*3}px`
 		 		context.canvas.width=context.canvas.width;
     
-     drawCubicCurve()
-
-    x1Line(parseInt(spanX1.style.top), parseInt(spanX1.style.left))
-    y1Line(parseInt(spanY1.style.top), parseInt(spanY1.style.left))
-
-
-
-    
-    cubicBezierValue( (parseInt(spanX1.style.left)/300), (300-(parseInt(spanX1.style.top)))/300,  (parseInt(spanY1.style.left)/300), (300-(parseInt(spanY1.style.top)))/300 )
-		 }
+     	drawCubicCurve()
+    	x1Line(parseInt(spanX1.style.top), parseInt(spanX1.style.left))
+    	y1Line(parseInt(spanY1.style.top), parseInt(spanY1.style.left))
+		cubicBezierValue( (parseInt(spanX1.style.left)/300), (300-(parseInt(spanX1.style.top)))/300,  (parseInt(spanY1.style.left)/300), (300-(parseInt(spanY1.style.top)))/300 )}
 
 		
 
-
+    	//these two button are just for testing purposes, need to remove them in final build
 		let buttonCube:any = document.createElement("button")
 		buttonCube.setAttribute('style', 
 		'width:50px;background-Color:orange;height:50px;left:185px; top:55px; position:absolute; transition-Timing-Function:linear;transition-duration:2s;color:white;')
@@ -200,6 +197,9 @@ let targetElement:any = null;
 		cubicSpan.style.left = "10%"
 		cubicSpan.style.width = "10"
 
+
+		//transition UI ends.
+
 		
 
 
@@ -224,8 +224,8 @@ let targetElement:any = null;
 
        
        console.log (parseInt(spanX1.style.top))
-
-       function x1Line(top:any, left:any){
+       //these two similar function draw the dynamic lines that spawn off from pointers.
+function x1Line(top:any, left:any){
        	if (canvas.getContext) 
        {
        let context = canvas.getContext('2d');
@@ -239,7 +239,11 @@ let targetElement:any = null;
    	   context.stroke();
    		}
        }
-       function y1Line(top:any, left:any){
+
+
+
+
+function y1Line(top:any, left:any){
        	if (canvas.getContext) 
        {
        let context = canvas.getContext('2d');
@@ -268,7 +272,7 @@ let targetElement:any = null;
 
 
 
-
+      	//need to drag pointers to get custom value.
 		dragElement(spanX1)
 		
 		dragElement(spanY1)
@@ -286,8 +290,7 @@ let targetElement:any = null;
       canvasDiv.appendChild(spanY2)
       canvasDiv.appendChild(cubicSpan)
 
-
-   function createEditor(event:any){  
+function createEditor(event:any){  
      let mainContainer = document.createElement("div")
     
      targetElement = event.target;
@@ -301,10 +304,12 @@ let targetElement:any = null;
 	
     return mainContainer
     }
-
+//need to remove below line in final build.
  document.body.append(buttonCube,buttonCube2)
 
- function cubicBezierValue( p1:any, p2:any, q1:any ,q2:any){
+//gets the cubicBezierValue and then displays in digits, also sets the value at target element
+
+function cubicBezierValue( p1:any, p2:any, q1:any ,q2:any){
          
    	cubicSpan.innerText= `cubic-bezier(${p1.toFixed(2)},${p2.toFixed(2)},${q1.toFixed(2)},${q2.toFixed(2)})`
 
@@ -317,7 +322,9 @@ let targetElement:any = null;
    			
 
    }
- function drawCubicCurve(){
+
+   //draws the curve you see on canvas.
+function drawCubicCurve(){
    		
     
 
@@ -329,8 +336,8 @@ let targetElement:any = null;
        context.stroke();
    }
 	
-
-		function dragElement(elmnt:any) {
+// when pointers are dragged, this function runs, also sets the transitionTimingFunction in real time.
+function dragElement(elmnt:any) {
   let pos1:any = 0, pos2:any = 0, pos3:any = 0, pos4:any = 0;
   
    
@@ -359,17 +366,15 @@ let targetElement:any = null;
     	elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
 
     	 
-   	} 
+   	}
+
+   	//when pointers are being dragged, these functions get called and set values real time 
    	context.canvas.width=context.canvas.width;
     
-     drawCubicCurve()
-    
-
+    drawCubicCurve()
     x1Line(parseInt(spanX1.style.top), parseInt(spanX1.style.left))
     y1Line(parseInt(spanY1.style.top), parseInt(spanY1.style.left))
-
-    
-    cubicBezierValue((parseInt(spanX1.style.left)/300), (300-(parseInt(spanX1.style.top)))/300,  (parseInt(spanY1.style.left)/300), (300-(parseInt(spanY1.style.top)))/300 )
+	cubicBezierValue((parseInt(spanX1.style.left)/300), (300-(parseInt(spanX1.style.top)))/300,  (parseInt(spanY1.style.left)/300), (300-(parseInt(spanY1.style.top)))/300 )
 
     if (elmnt.offsetLeft - pos1 <=300 && elmnt.offsetLeft - pos1 >=0 ){
     	elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
@@ -414,7 +419,7 @@ let startTransitionEditor = (event: MouseEvent) => {
 
   
 
-
+//hold alt key and then click on any html element you want  to modify.
 
 let enable = () => {
   document.addEventListener('click', startTransitionEditor );
