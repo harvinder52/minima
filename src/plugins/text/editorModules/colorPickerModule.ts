@@ -57,7 +57,7 @@ export  const colorPicker = document.createElement("button");
       pickr.hide();
       document.querySelector(".pcr-app").remove();
     });
-    
+       //enable
         pickr.show();
        
           });
